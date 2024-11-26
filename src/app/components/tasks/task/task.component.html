@@ -1,0 +1,20 @@
+<article [ngClass]="{'completed': isCompleted}">
+
+  <div class="cancel-task-container">
+    <span class="material-symbols-outlined cancel-task" (click)="OnDelete()">cancel</span>
+  </div>
+
+  <h2>{{ task.title }}</h2>
+  <time>Due date: {{ task.dueDate | date: 'dd-MM-yyyy' }}</time>
+  <p>{{ task.summary }}</p>
+
+  <p class="actions">
+    @if (!isCompleted) {
+      <button (click)="onCompleteTask()">Complete</button>
+    } @else {
+      <p>Task completed!</p>
+    }
+  </p>
+
+</article>
+

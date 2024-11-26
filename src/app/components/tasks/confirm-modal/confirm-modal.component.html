@@ -1,0 +1,8 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+  <h3>{{ message }}</h3>
+  <p class="actions">
+    <button type="button" (click)="onCancel()">No</button>
+    <button type="submit" (click)="onConfirm()">Yes</button>
+  </p>
+</dialog>

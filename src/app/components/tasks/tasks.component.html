@@ -1,0 +1,27 @@
+@if (isAddingTask) {
+  <app-new-task (cancel)="onCancel()" (addTask)="onAddTask($event)"/>
+}
+
+@if (isDeleteTask) {
+  <app-confirm-modal [message]="'Are you sure you want to proceed?'" (cancel)="onCancelDelete()" (confirm)="onConfirmDelete()"/>
+    }
+
+<section id="tasks">
+  <header>
+    <h2>{{name}} <br/>Tasks</h2>
+
+    <menu>
+      <button (click)="onStartTask()">Add Task</button>
+    </menu>
+  </header>
+
+  <ul>
+    @for (task of selectedUserTasks; track task.id) {
+      <li>
+        <app-task [task]="task" [isCompleted]="completedTaskIds.has(task.id)" (complete)="onCompleteTask($event)" (delete)="startDelete($event)" />
+      </li>
+    }
+  </ul>
+</section>
+
+

@@ -1,0 +1,23 @@
+<app-header/>
+
+<main>
+  <ul id="users">
+
+    <li *ngFor="let user of users">
+      <app-user
+        [id]="user.id"
+        [avatar]="user.avatar"
+        [name]="user.name"
+        [selected]="user.id === selectedUser?.id"
+        (select)="onSelectUser($event)">
+      </app-user>
+    </li>
+  </ul>
+
+  <app-tasks *ngIf="selectedUser; else noSelected" [userId]="selectedUser.id"  [name]="selectedUser.name" [tasks]="tasks" />
+  <ng-template #noSelected>
+    <h2>Select a user to see their tasks</h2>
+  </ng-template>
+</main>
+
+
